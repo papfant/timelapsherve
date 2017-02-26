@@ -10,19 +10,19 @@ def shutdownpi():
     process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
     output = process.communicate()[0]
     print output
-sleep(1)
+sleep(60)
 if localtime()[3] == 12:
 	with PiCamera() as camera:
 		camera.resolution = (2592,1944)
 		camera.framerate = 15
 		sleep(5)
-		camera.capture('/home/pi/TimeLapseHerve/image%.jpg' % strftime('%Y-%m-%d_%H%M%S'))
+		camera.capture('/home/pi/TimeLapseHerve/image' + strftime('%Y-%m-%d_%H%M%S') + '.jpg')
 else:
 	with PiCamera() as camera:
 		camera.resolution = (2592,1944)
 		camera.framerate = 15
 		sleep(5)
-		camera.capture('/home/pi/TimeLapseHerve/image%.jpg' % strftime('%Y-%m-%d_%H%M%S'))
+		camera.capture('/home/pi/TimeLapseHerve/image' + strftime('%Y-%m-%d_%H%M%S') + '.jpg')
 	#sleep(294)	
-sleep(2)
+sleep(180)
 shutdownpi()
